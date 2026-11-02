@@ -1,0 +1,40 @@
+---
+title: "Titre"
+subtitle: "Sous-titre"
+
+date: today
+date-format: DD.MM.YYYY
+author: "Fabrizio Albertetti"
+
+format:
+  pdf:
+    number-sections: true
+    colorlinks: true
+    output-file: instructions.pdf
+    papersize: A4
+    documentclass: scrartcl
+    geometry:
+      - top=30mm
+      - bottom=25mm
+      - headheight=15mm             # assez haut pour le logo
+
+header-includes: |
+  \usepackage{graphicx}
+  \usepackage{scrlayer-scrpage}
+  \KOMAoptions{headsepline=true,footsepline=true}
+  \clearpairofpagestyles
+  \ihead{\includegraphics[height=10mm]{./logo-he-arc-ing.jpg}}
+  \ohead{\small IA (ISC3)}
+  % \ifoot{\small Fabrizio Albertetti}
+  \ofoot{\small\pagemark}
+  \pagestyle{scrheadings}
+  \AtBeginDocument{\thispagestyle{scrheadings}\renewcommand*{\titlepagestyle}{scrheadings}}
+
+---
+
+
+# Introduction
+Ceci
+
+# Objectifs
+jklj
