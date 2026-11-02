@@ -1,0 +1,20 @@
+title: HE-Arc Handout
+author: HE-Arc
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    pdf:
+      documentclass: scrartcl
+      papersize: a4
+      geometry:
+        - top=30mm
+        - bottom=25mm
+        - left=25mm
+        - right=25mm
+        - headheight=15mm
+      number-sections: true
+      colorlinks: true
+      include-in-header: header.tex
+      format-resources:
+        - logo-he-arc-ing.jpg
