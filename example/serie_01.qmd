@@ -1,14 +1,6 @@
 ---
-title: "Introduction à l’intelligence artificielle"
-subtitle: "Comprendre, expérimenter et utiliser l’IA générative"
-author: "Fabrizio Albertetti"
-date: today
-date-format: "D MMMM YYYY"
-lang: fr
-format:
-  theme-hearc-handout-pdf:
-    toc: true
-    toc-depth: 2
+subtitle: "Série 1 : Comprendre, expérimenter et utiliser l’IA générative"
+
 ---
 
 # Objectifs d’apprentissage

@@ -1,2 +1,13 @@
 project:
   output-dir: _output
+
+
+title: "Introduction à l’Intelligence Artificielle"
+author: "Fabrizio Albertetti"
+date: today
+date-format: "D MMMM YYYY"
+lang: fr
+format:
+  theme-hearc-handout-pdf:
+    toc: true
+    toc-depth: 2
