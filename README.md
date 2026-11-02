@@ -1,4 +1,5 @@
-# theme-hearc-assignment
+# Extension Quarto : thème de séries/devoirs HE-Arc Ingénierie (PDF)
+
 
 Extension de format Quarto pour produire des supports de cours PDF au format
 A4 avec la classe LaTeX `scrartcl`, une numérotation des sections et l’en-tête
@@ -16,15 +17,15 @@ configurable et conserve la pagination.
 
 Le dépôt contient les sources de l’extension dans
 `_extensions/theme-hearc-assignment/`. L’exemple
-[`example/instructions.qmd`](example/instructions.qmd) utilise cette copie
+[`example/serie_01.qmd`](example/serie_01.qmd) utilise cette copie
 locale et ses illustrations dans `example/images/`. Depuis la racine du dépôt,
 générez son PDF avec :
 
 ```sh
-quarto render example/instructions.qmd
+quarto render example/serie_01.qmd
 ```
 
-Le résultat est créé dans `_output/example/instructions.pdf`. Le dossier
+Le résultat est créé dans `_output/example/serie_01.pdf`. Le dossier
 `_output/` est configuré comme répertoire de rendu dans `_quarto.yml`; Quarto
 conserve dans ce dossier le chemin relatif du document source.
 
@@ -34,7 +35,7 @@ Dans le dossier de votre projet Quarto, installez l’extension publiée dans
 ce dépôt GitHub :
 
 ```sh
-quarto add fabrizioalbertetti/quarto_theme_hearc_assignment
+quarto add fabrizioalbertetti/quarto_theme_hearc_assignment/extension
 ```
 
 Cette commande télécharge l’extension dans le dossier `_extensions` du
