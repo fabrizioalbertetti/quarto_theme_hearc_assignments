@@ -16,7 +16,7 @@ configurable et conserve la pagination.
 ## Utiliser l’exemple de ce dépôt
 
 Le dépôt contient les sources de l’extension dans
-`_extensions/theme-hearc-assignment/`. L’exemple
+`_extensions/theme-hearc-assignments/`. L’exemple
 [`example/serie_01.qmd`](example/serie_01.qmd) utilise cette copie
 locale et ses illustrations dans `example/images/`. Depuis la racine du dépôt,
 générez son PDF avec :
@@ -39,13 +39,13 @@ Dans le dossier de votre projet Quarto, installez l’extension publiée dans
 ce dépôt GitHub :
 
 ```sh
-quarto add fabrizioalbertetti/quarto_theme_hearc_assignment/extension
+quarto add fabrizioalbertetti/quarto_theme_hearc_assignments/extension
 ```
 
 Cette commande télécharge l’extension dans le dossier `_extensions` du
 projet. Elle doit être exécutée une fois par projet, puis à nouveau pour
 mettre à jour l’extension. Sélectionnez ensuite le format
-`theme-hearc-assignment-pdf` dans le front matter de votre document :
+`theme-hearc-assignments-pdf` dans le front matter de votre document :
 
 ```yaml
 ---
@@ -60,7 +60,7 @@ author: "Nom de l’enseignant·e"
 date: today
 lang: fr
 format:
-  theme-hearc-assignment-pdf:
+  theme-hearc-assignments-pdf:
     toc: true
     toc-depth: 2
 ---
@@ -90,7 +90,7 @@ project:
 
 ## Contenu de l’extension
 
-- `_extension.yml` définit le format PDF `theme-hearc-assignment-pdf` et ses
+- `_extension.yml` définit le format PDF `theme-hearc-assignments-pdf` et ses
   options par défaut.
 - `before-title.tex` configure l’en-tête et le pied de page avec
   `scrlayer-scrpage` et les métadonnées du cours.
