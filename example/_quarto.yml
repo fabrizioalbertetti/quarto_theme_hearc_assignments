@@ -2,12 +2,18 @@ project:
   output-dir: _output
 
 
+course:
+  name: Introduction à l'Intelligence Artificielle"
+  short: "IA"
+  class: "ISC3"
+  footer: "footer"
+
 title: "Introduction à l’Intelligence Artificielle"
 author: "Fabrizio Albertetti"
 date: today
 date-format: "D MMMM YYYY"
 lang: fr
 format:
-  theme-hearc-handout-pdf:
-    toc: true
+  theme-hearc-assignment-pdf:
+    toc: false
     toc-depth: 2

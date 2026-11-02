@@ -1,4 +1,4 @@
-title: HE-Arc Handout
+title: HE-Arc Assignment
 author: HE-Arc
 version: 1.0.0
 quarto-required: ">=1.4.0"
@@ -15,6 +15,7 @@ contributes:
         - headheight=15mm
       number-sections: true
       colorlinks: true
-      include-in-header: header.tex
+      template-partials:
+        - before-title.tex
       format-resources:
         - logo-he-arc-ing.jpg

@@ -1,8 +1,9 @@
-# theme-hearc-handout
+# theme-hearc-assignment
 
 Extension de format Quarto pour produire des supports de cours PDF au format
 A4 avec la classe LaTeX `scrartcl`, une numérotation des sections et l’en-tête
-HE-Arc (logo et pagination).
+avec le logo, la classe et le cours. Le pied de page peut afficher un texte
+configurable et conserve la pagination.
 
 ## Prérequis
 
@@ -14,7 +15,7 @@ HE-Arc (logo et pagination).
 ## Utiliser l’exemple de ce dépôt
 
 Le dépôt contient les sources de l’extension dans
-`_extensions/theme-hearc-handout/`. L’exemple
+`_extensions/theme-hearc-assignment/`. L’exemple
 [`example/instructions.qmd`](example/instructions.qmd) utilise cette copie
 locale et ses illustrations dans `example/images/`. Depuis la racine du dépôt,
 générez son PDF avec :
@@ -33,27 +34,36 @@ Dans le dossier de votre projet Quarto, installez l’extension publiée dans
 ce dépôt GitHub :
 
 ```sh
-quarto add fabrizioalbertetti/quarto_theme_hearc_handout
+quarto add fabrizioalbertetti/quarto_theme_hearc_assignment
 ```
 
 Cette commande télécharge l’extension dans le dossier `_extensions` du
 projet. Elle doit être exécutée une fois par projet, puis à nouveau pour
 mettre à jour l’extension. Sélectionnez ensuite le format
-`theme-hearc-handout-pdf` dans le front matter de votre document :
+`theme-hearc-assignment-pdf` dans le front matter de votre document :
 
 ```yaml
 ---
+course:
+  class: "ISC3"
+  short: "IA"
+  footer: "Support de cours"
+
 title: "Titre du cours"
 subtitle: "Sous-titre"
 author: "Nom de l’enseignant·e"
 date: today
 lang: fr
 format:
-  theme-hearc-handout-pdf:
+  theme-hearc-assignment-pdf:
     toc: true
     toc-depth: 2
 ---
 ```
+
+Le format affiche `course.class - course.short` dans l’en-tête et `course.footer`
+dans le pied de page. Ces valeurs doivent être définies dans le `_quarto.yml`
+du projet ou les métadonnées du document.
 
 Rendez ensuite le document avec :
 
@@ -75,8 +85,10 @@ project:
 
 ## Contenu de l’extension
 
-- `_extension.yml` définit le format PDF et ses options par défaut.
-- `header.tex` configure l’en-tête et le pied de page avec `scrlayer-scrpage`.
+- `_extension.yml` définit le format PDF `theme-hearc-assignment-pdf` et ses
+  options par défaut.
+- `before-title.tex` configure l’en-tête et le pied de page avec
+  `scrlayer-scrpage` et les métadonnées du cours.
 - `logo-he-arc-ing.jpg` est copié dans le dossier du document lors du rendu,
   afin que le PDF puisse utiliser le logo.
 
