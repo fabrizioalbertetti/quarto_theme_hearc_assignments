@@ -30,7 +30,7 @@ intelligence humaine reproduite à l’identique. Un système est généralement
 conçu pour un objectif précis et fonctionne dans les limites de ses données,
 de son entraînement et de sa programmation.
 
-![Fonctionnement simplifié d’un système d’IA : données, modèle, consigne et résultat à vérifier.](images/fonctionnement-ia.png){#fig-fonctionnement width=95%}
+![Fonctionnement simplifié d’un système d’IA : données, modèle, consigne et résultat à vérifier.](images/fonctionnement-ia.drawio.svg){#fig-fonctionnement width=95%}
 
 ## Quelques familles de systèmes
 
@@ -70,7 +70,7 @@ Des données incomplètes ou biaisées peuvent conduire à des résultats
 incomplets ou biaisés. Une bonne performance moyenne ne garantit pas non plus
 un résultat correct dans chaque situation.
 
-![Les quatre étapes du cycle de développement et de suivi d’un système d’apprentissage.](images/cycle-apprentissage.png){#fig-cycle width=95%}
+![Les quatre étapes du cycle de développement et de suivi d’un système d’apprentissage.](images/cycle-apprentissage.drawio.svg){#fig-cycle width=95%}
 
 # Bien dialoguer avec une IA générative
 

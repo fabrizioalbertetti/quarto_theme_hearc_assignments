@@ -29,6 +29,10 @@ Le résultat est créé dans `_output/example/serie_01.pdf`. Le dossier
 `_output/` est configuré comme répertoire de rendu dans `_quarto.yml`; Quarto
 conserve dans ce dossier le chemin relatif du document source.
 
+### Aperçu du rendu
+
+![Première page du PDF généré](example/serie_01-apercu.png)
+
 ## Installer l’extension depuis GitHub
 
 Dans le dossier de votre projet Quarto, installez l’extension publiée dans
