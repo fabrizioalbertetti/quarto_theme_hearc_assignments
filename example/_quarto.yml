@@ -14,6 +14,6 @@ date: today
 date-format: "D MMMM YYYY"
 lang: fr
 format:
-  theme-hearc-assignment-pdf:
+  theme-hearc-assignments-pdf:
     toc: false
     toc-depth: 2
