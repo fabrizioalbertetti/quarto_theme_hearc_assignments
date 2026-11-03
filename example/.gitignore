@@ -1,2 +1,7 @@
 /.quarto/
 **/*.quarto_ipynb
+
+# Sans `output-dir` dans _quarto.yml, les rendus sont écrits à côté des .qmd :
+# décommenter alors les deux lignes suivantes (les PDF restent conservés)
+*.html
+*_files/
