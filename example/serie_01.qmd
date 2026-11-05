@@ -72,6 +72,22 @@ un résultat correct dans chaque situation.
 
 ![Les quatre étapes du cycle de développement et de suivi d’un système d’apprentissage.](images/cycle-apprentissage.png){#fig-cycle width=95%}
 
+## Un exemple de code : les règles avant l’apprentissage
+
+Le programme ci-dessous, fourni dans le fichier `code/classifieur_spam.py`,
+classe un message à l’aide de règles écrites à la main. Il n’apprend rien des
+données : c’est précisément ce que l’apprentissage automatique cherche à
+améliorer.
+
+```{.python include="code/classifieur_spam.py" filename="classifieur_spam.py"}
+```
+
+On peut aussi n’afficher qu’un extrait du fichier, avec la numérotation
+d’origine des lignes :
+
+```{.python include="code/classifieur_spam.py" start-line=6 end-line=12 .numberLines}
+```
+
 # Bien dialoguer avec une IA générative
 
 Une consigne, ou *prompt*, gagne à préciser le contexte, la tâche, les

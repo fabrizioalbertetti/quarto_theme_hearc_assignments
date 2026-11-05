@@ -19,5 +19,6 @@ contributes:
         - before-title.tex
       filters:
         - drawio.lua
+        - include-code.lua
       format-resources:
         - logo-he-arc-ing.jpg

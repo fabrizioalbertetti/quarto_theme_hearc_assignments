@@ -107,6 +107,31 @@ macOS et Linux) ; sinon, indiquez son chemin dans la variable d’environnement
 Les exports sont mis en cache dans `.drawio-cache/` (à ignorer dans Git) et ne
 sont refaits que si le diagramme a été modifié.
 
+## Code source depuis un fichier
+
+Pour afficher un fichier de code sans le recopier dans le `.qmd`, laissez un
+bloc de code vide et indiquez le fichier avec l’attribut `include` (chemin
+relatif au document) :
+
+````markdown
+```{.python include="code/classifieur_spam.py" filename="classifieur_spam.py"}
+```
+````
+
+Pour n’afficher qu’un extrait, ajoutez `start-line` et `end-line`. Avec
+`.numberLines`, la numérotation reprend celle du fichier :
+
+````markdown
+```{.python include="code/classifieur_spam.py" start-line=6 end-line=12 .numberLines}
+```
+````
+
+Le code est seulement affiché, sans être exécuté. Il n’est donc pas
+nécessaire d’installer Python ou Jupyter. La classe du bloc (`.python`,
+`.java`, `.c`, …) détermine la coloration syntaxique. Le filtre
+`include-code.lua` fait ce remplacement. Voir l’exemple dans
+[`example/serie_01.qmd`](example/serie_01.qmd).
+
 ## Contenu de l’extension
 
 - `_extension.yml` définit le format PDF `theme-hearc-assignments-pdf` et ses
@@ -114,6 +139,8 @@ sont refaits que si le diagramme a été modifié.
 - `before-title.tex` configure l’en-tête et le pied de page avec
   `scrlayer-scrpage` et les métadonnées du cours.
 - `drawio.lua` convertit à la volée les diagrammes draw.io inclus comme images.
+- `include-code.lua` remplit les blocs de code `include="..."` avec le contenu
+  du fichier indiqué.
 - `logo-he-arc-ing.jpg` est copié dans le dossier du document lors du rendu,
   afin que le PDF puisse utiliser le logo.
 
