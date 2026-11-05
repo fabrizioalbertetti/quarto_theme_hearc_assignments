@@ -17,5 +17,7 @@ contributes:
       colorlinks: true
       template-partials:
         - before-title.tex
+      filters:
+        - drawio.lua
       format-resources:
         - logo-he-arc-ing.jpg

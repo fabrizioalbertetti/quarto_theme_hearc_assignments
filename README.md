@@ -88,12 +88,32 @@ project:
   output-dir: _output
 ```
 
+## Diagrammes draw.io
+
+Les fichiers `.drawio.svg` (et `.drawio`) peuvent être inclus directement,
+sans export préalable :
+
+```markdown
+![Légende](images/schema.drawio.svg){#fig-schema width=90%}
+```
+
+Au rendu PDF, le filtre `drawio.lua` de l’extension exporte le diagramme en
+PDF vectoriel (recadré) avec le CLI de [draw.io Desktop](https://www.drawio.com),
+qui doit donc être installé. `rsvg-convert` n’est pas nécessaire. L’exécutable
+est détecté automatiquement (emplacements d’installation usuels sous Windows,
+macOS et Linux) ; sinon, indiquez son chemin dans la variable d’environnement
+`DRAWIO_CMD`.
+
+Les exports sont mis en cache dans `.drawio-cache/` (à ignorer dans Git) et ne
+sont refaits que si le diagramme a été modifié.
+
 ## Contenu de l’extension
 
 - `_extension.yml` définit le format PDF `theme-hearc-assignments-pdf` et ses
   options par défaut.
 - `before-title.tex` configure l’en-tête et le pied de page avec
   `scrlayer-scrpage` et les métadonnées du cours.
+- `drawio.lua` convertit à la volée les diagrammes draw.io inclus comme images.
 - `logo-he-arc-ing.jpg` est copié dans le dossier du document lors du rendu,
   afin que le PDF puisse utiliser le logo.
 

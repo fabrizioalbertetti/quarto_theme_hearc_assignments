@@ -1,0 +1,23 @@
+title: Thème HE-Arc Ingénierie pour séries/devoirs (PDF)
+author: Fabrizio Albertetti
+version: 1.0.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    pdf:
+      documentclass: scrartcl
+      papersize: a4
+      geometry:
+        - top=30mm
+        - bottom=25mm
+        - left=25mm
+        - right=25mm
+        - headheight=15mm
+      number-sections: true
+      colorlinks: true
+      template-partials:
+        - before-title.tex
+      filters:
+        - drawio.lua
+      format-resources:
+        - logo-he-arc-ing.jpg

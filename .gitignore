@@ -221,3 +221,8 @@ __marimo__/
 
 /.quarto/
 **/*.quarto_ipynb
+
+/.luarc.json
+
+# Cache des exports draw.io (filtre drawio.lua)
+.drawio-cache/
