@@ -12,13 +12,39 @@ Usage dans le .qmd (le bloc est laissé vide) :
 Attributs :
 - include    : chemin du fichier, relatif au document .qmd ;
 - start-line : première ligne à afficher (défaut : 1) ;
-- end-line   : dernière ligne à afficher (défaut : fin du fichier).
+- end-line   : dernière ligne à afficher (défaut : fin du fichier) ;
+- tab-size   : largeur des tabulations, remplacées par des espaces (défaut : 4).
 
 Le code n'est pas exécuté : il est seulement affiché, avec la coloration
 syntaxique correspondant à la classe du bloc (.python, .java, .c, ...).
 Avec .numberLines, la numérotation reprend celle du fichier (start-line).
 Les attributs habituels de Quarto restent utilisables (filename=, ...).
 ]]
+
+-- Remplace les tabulations par des espaces (alignement sur des colonnes).
+local function expand_tabs(line, size)
+  if not line:find("	", 1, true) then return line end
+  local out, col = {}, 0
+  for ch in line:gmatch(utf8 and utf8.charpattern or ".") do
+    if ch == "	" then
+      local n = size - (col % size)
+      table.insert(out, string.rep(" ", n))
+      col = col + n
+    else
+      table.insert(out, ch)
+      col = col + 1
+    end
+  end
+  return table.concat(out)
+end
+
+-- Chemin relatif au document .qmd (indépendant du répertoire courant).
+local function resolve(path)
+  if pandoc.path.is_absolute(path) then return path end
+  local input = quarto and quarto.doc and quarto.doc.input_file
+  if not input or input == "" then return path end
+  return pandoc.path.join({ pandoc.path.directory(input), path })
+end
 
 local function read_lines(path)
   local f = io.open(path, "rb")
@@ -40,7 +66,7 @@ function CodeBlock(block)
   local path = block.attributes["include"]
   if not path then return nil end
 
-  local lines = read_lines(path)
+  local lines = read_lines(resolve(path))
   if not lines then
     quarto.log.error("[include-code] fichier introuvable : " .. path)
     return nil
@@ -55,13 +81,15 @@ function CodeBlock(block)
       "[include-code] plage vide (%d-%d) pour %s", first, last, path))
   end
 
+  local tab_size = tonumber(block.attributes["tab-size"]) or 4
   local selected = {}
-  for i = first, last do table.insert(selected, lines[i]) end
+  for i = first, last do table.insert(selected, expand_tabs(lines[i], tab_size)) end
   block.text = table.concat(selected, "\n")
 
   block.attributes["include"] = nil
   block.attributes["start-line"] = nil
   block.attributes["end-line"] = nil
+  block.attributes["tab-size"] = nil
   if first > 1 and block.attributes["startFrom"] == nil then
     block.attributes["startFrom"] = tostring(first)
   end
