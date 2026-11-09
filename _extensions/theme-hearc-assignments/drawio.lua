@@ -63,6 +63,21 @@ local function find_drawio()
   return false
 end
 
+-- Vrai sous Linux quand aucun affichage n'est disponible (ni X11 ni Wayland).
+local function needs_virtual_display()
+  if pandoc.system.os ~= "linux" then return false end
+  local display = os.getenv("DISPLAY")
+  local wayland = os.getenv("WAYLAND_DISPLAY")
+  return (display == nil or display == "") and (wayland == nil or wayland == "")
+end
+
+local function find_xvfb_run()
+  for _, c in ipairs({ "/usr/bin/xvfb-run", "/usr/local/bin/xvfb-run" }) do
+    if file_exists(c) then return c end
+  end
+  return nil
+end
+
 local function output_extension()
   if quarto.doc.is_format("latex") or quarto.doc.is_format("pdf") then
     return "pdf"
@@ -102,8 +117,25 @@ local function export(src, ext)
   end
   if pandoc.system.os == "linux" then
     table.insert(args, "--no-sandbox")
+    table.insert(args, "--disable-gpu")
   end
   table.insert(args, src)
+
+  -- draw.io Desktop est une application Electron : même en mode --export, il
+  -- lui faut un serveur X. Sans affichage (serveur, CI, SSH), on passe par
+  -- un serveur X virtuel via xvfb-run (paquet « xvfb »).
+  if needs_virtual_display() then
+    local xvfb = find_xvfb_run()
+    if not xvfb then
+      quarto.log.error(
+        "[drawio] aucun affichage ($DISPLAY absent) : draw.io a besoin d'un serveur X.\n" ..
+        "Installez xvfb (sudo apt install xvfb) pour l'export sans interface graphique.")
+      return nil
+    end
+    table.insert(args, 1, cmd)
+    table.insert(args, 1, "-a")
+    cmd = xvfb
+  end
 
   quarto.log.output("[drawio] export " .. src .. " -> " .. out)
   local ok, err = pcall(pandoc.pipe, cmd, args, "")
