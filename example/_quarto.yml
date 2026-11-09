@@ -1,5 +1,7 @@
 project:
   output-dir: _output
+  post-render:
+    - _extensions/fabrizioalbertetti/theme-hearc-assignments/cleanup.ts
 
 
 course:

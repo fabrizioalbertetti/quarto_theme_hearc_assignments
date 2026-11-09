@@ -132,6 +132,25 @@ nécessaire d’installer Python ou Jupyter. La classe du bloc (`.python`,
 `include-code.lua` fait ce remplacement. Voir l’exemple dans
 [`example/serie_01.qmd`](example/serie_01.qmd).
 
+## Nettoyage après le rendu
+
+Le script `cleanup.ts` de l’extension supprime les fichiers intermédiaires
+inutiles pour un rendu PDF : `<document>.html`, `<document>_files/` et
+`<document>_html/`, à côté des sources et dans le dossier de sortie. Les
+fichiers produits par le rendu en cours (par ex. `quarto render --to html`)
+sont conservés. Une extension de format ne pouvant pas déclarer de script
+post-render, ajoutez-le dans le `_quarto.yml` du projet :
+
+```yaml
+project:
+  output-dir: _output
+  post-render:
+    - _extensions/fabrizioalbertetti/theme-hearc-assignments/cleanup.ts
+```
+
+Le script est exécuté par le Deno intégré à Quarto : aucune dépendance
+supplémentaire n’est nécessaire.
+
 ## Contenu de l’extension
 
 - `_extension.yml` définit le format PDF `theme-hearc-assignments-pdf` et ses
@@ -141,6 +160,8 @@ nécessaire d’installer Python ou Jupyter. La classe du bloc (`.python`,
 - `drawio.lua` convertit à la volée les diagrammes draw.io inclus comme images.
 - `include-code.lua` remplit les blocs de code `include="..."` avec le contenu
   du fichier indiqué.
+- `cleanup.ts` supprime après le rendu les fichiers HTML intermédiaires
+  (script post-render à activer dans `_quarto.yml`).
 - `logo-he-arc-ing.jpg` est copié dans le dossier du document lors du rendu,
   afin que le PDF puisse utiliser le logo.
 
